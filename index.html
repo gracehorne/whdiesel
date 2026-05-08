@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WH Diesel &mdash; Will Horne Diesel Repair</title>
+  <style>
+    /* ── reset & base ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rust:    #b84c1a;
+      --rust-dk: #8c3610;
+      --tan:     #d4a96a;
+      --tan-lt:  #f0dfc0;
+      --cream:   #faf5eb;
+      --bark:    #3b2a1a;
+      --bark-lt: #5c4330;
+      --mid:     #7a6248;
+      --smoke:   #e8e0d5;
+      --shadow:  rgba(30,15,5,.45);
+      --font-head: 'Georgia', 'Times New Roman', serif;
+      --font-body: 'Trebuchet MS', 'Segoe UI', Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--bark);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    a { color: var(--rust); text-decoration: none; }
+    a:hover { color: var(--rust-dk); text-decoration: underline; }
+
+    img { display: block; max-width: 100%; }
+
+    /* ── utility ────────────────────────────────────────────── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section-label {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: .5rem;
+    }
+    .divider {
+      width: 60px; height: 4px;
+      background: var(--rust);
+      margin: 1rem 0 2rem;
+      border-radius: 2px;
+    }
+    .divider.center { margin-left: auto; margin-right: auto; }
+
+    /* ── nav ────────────────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bark);
+      border-bottom: 3px solid var(--rust);
+      box-shadow: 0 2px 10px var(--shadow);
+    }
+    nav .inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      font-weight: bold;
+      color: var(--tan-lt);
+      letter-spacing: .04em;
+    }
+    .nav-logo span { color: var(--rust); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--smoke);
+      font-size: .9rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--tan); text-decoration: none; }
+
+    /* hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 26px; height: 3px;
+      background: var(--smoke); border-radius: 2px;
+      transition: .25s;
+    }
+    .mobile-menu {
+      display: none; flex-direction: column;
+      background: var(--bark-lt);
+      border-top: 1px solid var(--rust);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 14px 24px;
+      color: var(--smoke);
+      font-size: .95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      transition: background .2s;
+    }
+    .mobile-menu a:hover { background: var(--bark); text-decoration: none; }
+
+    /* ── hero ───────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      background: var(--bark);
+      overflow: hidden;
+      min-height: 520px;
+      display: flex; align-items: center;
+    }
+    /* textured background via CSS pattern */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg,
+          rgba(255,255,255,.015) 0px, rgba(255,255,255,.015) 1px,
+          transparent 1px, transparent 12px),
+        repeating-linear-gradient(-45deg,
+          rgba(255,255,255,.015) 0px, rgba(255,255,255,.015) 1px,
+          transparent 1px, transparent 12px);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(120deg, rgba(184,76,26,.18) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 700px;
+      padding: 80px 24px 80px 64px;
+    }
+    .hero-eyebrow {
+      font-size: .8rem; font-weight: 700;
+      letter-spacing: .25em; text-transform: uppercase;
+      color: var(--tan); margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.15;
+      color: var(--cream);
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--rust);
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--smoke);
+      max-width: 520px;
+      margin-bottom: 2.25rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: .85rem 2rem;
+      border-radius: 3px;
+      font-weight: 700;
+      font-size: .95rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: background .2s, transform .1s, box-shadow .2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--rust);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(184,76,26,.45);
+    }
+    .btn-primary:hover {
+      background: var(--rust-dk);
+      color: #fff;
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(184,76,26,.55);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--tan-lt);
+      border: 2px solid var(--tan);
+      margin-left: 1rem;
+    }
+    .btn-outline:hover {
+      background: rgba(212,169,106,.15);
+      color: var(--tan-lt);
+      text-decoration: none;
+    }
+    .hero-badge {
+      position: absolute; right: 48px; bottom: 48px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: var(--rust);
+      border: 4px solid var(--tan);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      color: #fff;
+      font-family: var(--font-head);
+      box-shadow: 0 4px 20px var(--shadow);
+      z-index: 1;
+    }
+    .hero-badge .badge-line1 { font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
+    .hero-badge .badge-main { font-size: 1.5rem; font-weight: bold; line-height: 1; }
+    .hero-badge .badge-line2 { font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
+
+    /* ── services ───────────────────────────────────────────── */
+    #services {
+      background: var(--cream);
+      padding: 90px 0;
+    }
+    #services h2 {
+      font-family: var(--font-head);
+      font-size: 2.2rem;
+      color: var(--bark);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: .5rem;
+    }
+    .service-card {
+      background: #fff;
+      border: 1px solid var(--smoke);
+      border-top: 4px solid var(--rust);
+      border-radius: 4px;
+      padding: 1.75rem 1.75rem 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+      transition: box-shadow .2s, transform .2s;
+    }
+    .service-card:hover {
+      box-shadow: 0 6px 22px rgba(0,0,0,.11);
+      transform: translateY(-2px);
+    }
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: .85rem;
+    }
+    .service-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      color: var(--bark);
+      margin-bottom: .5rem;
+    }
+    .service-card p {
+      font-size: .92rem;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+
+    /* ── about ──────────────────────────────────────────────── */
+    #about {
+      background: var(--bark);
+      padding: 90px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #about::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg,
+          rgba(255,255,255,.03) 0px, rgba(255,255,255,.03) 1px,
+          transparent 1px, transparent 28px);
+      pointer-events: none;
+    }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative; z-index: 1;
+    }
+    .about-text .section-label { color: var(--tan); }
+    #about h2 {
+      font-family: var(--font-head);
+      font-size: 2.2rem;
+      color: var(--cream);
+      margin-bottom: .5rem;
+    }
+    #about .divider { background: var(--rust); }
+    #about p {
+      color: var(--smoke);
+      margin-bottom: 1rem;
+      font-size: .97rem;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .stat {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 4px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: var(--font-head);
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--tan);
+      display: block;
+    }
+    .stat-label {
+      font-size: .78rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      opacity: .75;
+    }
+    /* portrait placeholder */
+    .about-portrait {
+      display: flex; align-items: center; justify-content: center;
+    }
+    .portrait-frame {
+      width: 340px; height: 380px;
+      border: 5px solid var(--rust);
+      border-radius: 4px;
+      background: var(--bark-lt);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: var(--mid);
+      font-size: .85rem;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 8px 8px 0 var(--rust-dk);
+    }
+    .portrait-frame::before {
+      content: '&#9874;';
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 1rem;
+      color: var(--tan);
+      opacity: .4;
+    }
+    .portrait-initials {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: var(--rust);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head);
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 14px var(--shadow);
+    }
+    .portrait-name {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-bottom: .3rem;
+    }
+    .portrait-title {
+      font-size: .8rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--tan);
+    }
+
+    /* ── testimonials ───────────────────────────────────────── */
+    #testimonials {
+      background: var(--smoke);
+      padding: 90px 0;
+    }
+    #testimonials h2 {
+      font-family: var(--font-head);
+      font-size: 2.2rem;
+      color: var(--bark);
+      text-align: center;
+    }
+    #testimonials .section-label { text-align: center; display: block; }
+    #testimonials .divider { margin-left: auto; margin-right: auto; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: .5rem;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: 4px;
+      border-left: 5px solid var(--rust);
+      padding: 1.75rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '\201C';
+      position: absolute; top: .75rem; right: 1.25rem;
+      font-family: var(--font-head);
+      font-size: 5rem;
+      color: var(--tan-lt);
+      line-height: 1;
+    }
+    .testimonial-text {
+      font-size: .97rem;
+      color: var(--bark-lt);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      position: relative; z-index: 1;
+    }
+    .testimonial-author {
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .author-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--rust);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      color: #fff;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .author-name {
+      font-weight: 700;
+      font-size: .92rem;
+      color: var(--bark);
+    }
+    .author-detail {
+      font-size: .8rem;
+      color: var(--mid);
+    }
+    .stars {
+      color: var(--rust);
+      font-size: 1rem;
+      margin-bottom: .75rem;
+    }
+
+    /* ── contact ────────────────────────────────────────────── */
+    #contact {
+      background: var(--cream);
+      padding: 90px 0;
+    }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    #contact h2 {
+      font-family: var(--font-head);
+      font-size: 2.2rem;
+      color: var(--bark);
+    }
+    #contact p {
+      color: var(--mid);
+      margin-bottom: 1.5rem;
+    }
+    .contact-detail {
+      display: flex; align-items: flex-start; gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .contact-icon {
+      width: 44px; height: 44px;
+      flex-shrink: 0;
+      border-radius: 4px;
+      background: var(--rust);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 1.2rem;
+    }
+    .contact-detail-text strong {
+      display: block;
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: .15rem;
+    }
+    .contact-detail-text span {
+      font-size: .97rem;
+      color: var(--bark);
+    }
+
+    /* form */
+    .contact-form {
+      background: #fff;
+      border: 1px solid var(--smoke);
+      border-radius: 6px;
+      padding: 2.25rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,.06);
+    }
+    .contact-form h3 {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      color: var(--bark);
+      margin-bottom: 1.5rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-group label {
+      display: block;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: .4rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: .7rem .95rem;
+      border: 1.5px solid var(--smoke);
+      border-radius: 3px;
+      background: var(--cream);
+      color: var(--bark);
+      font-family: var(--font-body);
+      font-size: .95rem;
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--rust);
+      box-shadow: 0 0 0 3px rgba(184,76,26,.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit { text-align: right; margin-top: .5rem; }
+    .form-submit .btn { font-family: var(--font-body); }
+
+    /* form success message */
+    .form-success {
+      display: none;
+      background: #f0faf0;
+      border: 1.5px solid #5cad5c;
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+      color: #2d6b2d;
+      font-size: .95rem;
+      margin-top: 1rem;
+    }
+    .form-success.visible { display: block; }
+
+    /* ── footer ─────────────────────────────────────────────── */
+    footer {
+      background: var(--bark);
+      border-top: 3px solid var(--rust);
+      padding: 40px 0 28px;
+    }
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      color: var(--cream);
+    }
+    .footer-logo span { color: var(--rust); }
+    .footer-tagline {
+      font-size: .85rem;
+      color: var(--mid);
+      letter-spacing: .06em;
+    }
+    .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+    .footer-links a {
+      color: var(--smoke);
+      font-size: .82rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      opacity: .7;
+      transition: opacity .2s;
+    }
+    .footer-links a:hover { opacity: 1; text-decoration: none; }
+    .footer-copy {
+      font-size: .78rem;
+      color: var(--mid);
+      opacity: .6;
+    }
+
+    /* ── responsive ─────────────────────────────────────────── */
+    @media (max-width: 820px) {
+      .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-portrait { order: -1; }
+      .portrait-frame { width: 260px; height: 300px; }
+      .hero-badge { display: none; }
+      .hero-content { padding: 60px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── nav ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="inner">
+    <span class="nav-logo"><span>WH</span> Diesel</span>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#about"    onclick="closeMobile()">About</a>
+    <a href="#testimonials" onclick="closeMobile()">Reviews</a>
+    <a href="#contact"  onclick="closeMobile()">Contact</a>
+  </div>
+</nav>
+
+<!-- ── hero ────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Monadnock Region &rsaquo; Diesel Specialist</p>
+    <h1>Diesel Repair<br>Done <em>Right.</em></h1>
+    <p>
+      Will Horne brings decades of hands-on diesel experience straight to the
+      Monadnock Region. From heavy-duty trucks to farm equipment, no job is
+      too big &mdash; and nothing leaves the shop until it&rsquo;s done right.
+    </p>
+    <a href="#contact" class="btn btn-primary">Get a Quote</a>
+    <a href="#services" class="btn btn-outline">Our Services</a>
+  </div>
+  <div class="hero-badge">
+    <span class="badge-line1">Trusted</span>
+    <span class="badge-main">WH</span>
+    <span class="badge-line2">Diesel</span>
+  </div>
+</section>
+
+<!-- ── services ────────────────────────────────────────────── -->
+<section id="services">
+  <div class="container">
+    <span class="section-label">What We Do</span>
+    <h2>Diesel Repair Services</h2>
+    <div class="divider"></div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">&#9881;</div>
+        <h3>Engine Diagnostics &amp; Repair</h3>
+        <p>Full engine diagnostics using professional scan tools, plus comprehensive repair work on all diesel engine types &mdash; light, medium, and heavy duty.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">&#128295;</div>
+        <h3>Preventive Maintenance</h3>
+        <p>Oil changes, filter service, fluid flushes, and scheduled tune-ups to keep your diesel running strong mile after mile.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">&#128663;</div>
+        <h3>Fuel System Service</h3>
+        <p>Injector cleaning and replacement, fuel pump service, fuel filter replacement, and complete fuel system diagnostics.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">&#128295;</div>
+        <h3>Turbocharger Service</h3>
+        <p>Turbo inspection, cleaning, rebuilding, and replacement. We address boost leaks and wastegate issues to restore full power.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">&#9889;</div>
+        <h3>Electrical &amp; Cooling Systems</h3>
+        <p>Alternator, starter, and wiring diagnostics, plus radiator, water pump, and cooling system repairs to prevent overheating.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">&#128664;</div>
+        <h3>Trucks, Farm &amp; Heavy Equipment</h3>
+        <p>Experience across pickup trucks, semi trucks, tractors, skid steers, and other diesel-powered commercial and agricultural equipment.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── about ───────────────────────────────────────────────── -->
+<section id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-text">
+        <span class="section-label">Who We Are</span>
+        <h2>About Will Horne</h2>
+        <div class="divider"></div>
+        <p>
+          Will Horne has spent his career working on diesel engines of every
+          make and model. Raised in the Monadnock Region, he understands the
+          demands placed on the trucks and equipment that keep local farms,
+          businesses, and families moving.
+        </p>
+        <p>
+          Whether you&rsquo;re dealing with a mysterious check-engine light, a
+          hard-starting truck on a cold morning, or need a full engine
+          overhaul, Will brings the skills, the tools, and the straight talk
+          you deserve.
+        </p>
+        <p>
+          No upsells. No runaround. Just honest diesel work from someone who
+          takes real pride in the job.
+        </p>
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat-num">20+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">All</span>
+            <span class="stat-label">Makes &amp; Models</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">Local</span>
+            <span class="stat-label">Monadnock Region</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">100%</span>
+            <span class="stat-label">Honest Work</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-portrait">
+        <div class="portrait-frame">
+          <div class="portrait-initials">WH</div>
+          <p class="portrait-name">Will Horne</p>
+          <p class="portrait-title">Owner &amp; Master Diesel Tech</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── testimonials ────────────────────────────────────────── -->
+<section id="testimonials">
+  <div class="container">
+    <span class="section-label">Customer Reviews</span>
+    <h2>What People Are Saying</h2>
+    <div class="divider center"></div>
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">
+          &ldquo;Will diagnosed a problem that two other shops missed entirely.
+          Fixed it the same week, no drama, fair price. My 6.7 Powerstroke
+          hasn&rsquo;t run this good in years.&rdquo;
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">TM</div>
+          <div>
+            <p class="author-name">Tom M.</p>
+            <p class="author-detail">Keene, NH</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">
+          &ldquo;Our farm tractor went down right before hay season. Will came
+          out fast, got it running, and didn&rsquo;t charge us an arm and a
+          leg. Exactly the kind of neighbor you want in the Monadnock Region.&rdquo;
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SR</div>
+          <div>
+            <p class="author-name">Sarah R.</p>
+            <p class="author-detail">Jaffrey, NH</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">
+          &ldquo;Brought my Duramax in for a turbo issue. Will explained
+          everything clearly, showed me the worn parts, and had it back to
+          me in two days. Honest guy. Highly recommend.&rdquo;
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">JB</div>
+          <div>
+            <p class="author-name">Jason B.</p>
+            <p class="author-detail">Peterborough, NH</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── contact ─────────────────────────────────────────────── -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <span class="section-label">Get In Touch</span>
+        <h2>Request a Quote</h2>
+        <div class="divider"></div>
+        <p>
+          Serving the Monadnock Region and surrounding areas. Reach out to
+          describe your vehicle or equipment and get an honest assessment.
+        </p>
+
+        <div class="contact-detail">
+          <div class="contact-icon">&#9993;</div>
+          <div class="contact-detail-text">
+            <strong>Email</strong>
+            <span><a href="mailto:will@whdiesel.com">will@whdiesel.com</a></span>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-icon">&#128205;</div>
+          <div class="contact-detail-text">
+            <strong>Service Area</strong>
+            <span>Monadnock Region, NH &amp; surrounding towns</span>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-icon">&#128336;</div>
+          <div class="contact-detail-text">
+            <strong>Hours</strong>
+            <span>Mon &ndash; Fri: 7am &ndash; 5pm<br>Sat: By appointment</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Send a Message</h3>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="(603) 555-0100" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="vehicle">Vehicle / Equipment</label>
+            <input type="text" id="vehicle" name="vehicle" placeholder="e.g. 2018 Ford F-350 6.7 Powerstroke" />
+          </div>
+          <div class="form-group">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service">
+              <option value="">-- Select a service --</option>
+              <option>Engine Diagnostics &amp; Repair</option>
+              <option>Preventive Maintenance</option>
+              <option>Fuel System Service</option>
+              <option>Turbocharger Service</option>
+              <option>Electrical / Cooling System</option>
+              <option>Farm / Heavy Equipment</option>
+              <option>Other / Not Sure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Describe the Issue</label>
+            <textarea id="message" name="message" placeholder="Tell Will what&rsquo;s going on with your vehicle or equipment..."></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </div>
+          <div class="form-success" id="formSuccess">
+            &#10003; &nbsp;Thanks! Will will be in touch shortly at <strong id="confirmEmail"></strong>.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── footer ──────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <p class="footer-logo"><span>WH</span> Diesel</p>
+      <p class="footer-tagline">Monadnock Region&rsquo;s Diesel Repair Specialist</p>
+      <nav class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 WH Diesel &mdash; Will Horne. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav toggle
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu   = document.getElementById('mobileMenu');
+  hamburgerBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+
+  // contact form (demo — logs to console; wire up to a backend or Formspree as needed)
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const emailVal = document.getElementById('email').value.trim();
+    if (!document.getElementById('fname').value.trim() || !emailVal) {
+      alert('Please fill in your name and email address.');
+      return;
+    }
+    document.getElementById('confirmEmail').textContent = emailVal;
+    document.getElementById('formSuccess').classList.add('visible');
+    this.querySelectorAll('input, select, textarea, button').forEach(el => el.disabled = true);
+  });
+</script>
+</body>
+</html>
