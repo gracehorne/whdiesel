@@ -9,16 +9,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --rust:    #b84c1a;
-      --rust-dk: #8c3610;
-      --tan:     #d4a96a;
-      --tan-lt:  #f0dfc0;
-      --cream:   #faf5eb;
-      --bark:    #3b2a1a;
-      --bark-lt: #5c4330;
-      --mid:     #7a6248;
-      --smoke:   #e8e0d5;
-      --shadow:  rgba(30,15,5,.45);
+      --rust:    #c9a220;
+      --rust-dk: #9e7d0e;
+      --tan:     #e8c547;
+      --tan-lt:  #fdf0b5;
+      --cream:   #f4f7fb;
+      --bark:    #0e1f40;
+      --bark-lt: #1b3060;
+      --mid:     #4a6fa5;
+      --smoke:   #d8e4f0;
+      --shadow:  rgba(10,20,50,.45);
       --font-head: 'Georgia', 'Times New Roman', serif;
       --font-body: 'Trebuchet MS', 'Segoe UI', Arial, sans-serif;
     }
@@ -124,7 +124,6 @@
       min-height: 520px;
       display: flex; align-items: center;
     }
-    /* textured background via CSS pattern */
     .hero::before {
       content: '';
       position: absolute; inset: 0;
@@ -140,7 +139,7 @@
     .hero::after {
       content: '';
       position: absolute; inset: 0;
-      background: linear-gradient(120deg, rgba(184,76,26,.18) 0%, transparent 60%);
+      background: linear-gradient(120deg, rgba(201,162,32,.18) 0%, transparent 60%);
       pointer-events: none;
     }
     .hero-content {
@@ -160,10 +159,7 @@
       color: var(--cream);
       margin-bottom: 1.25rem;
     }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--rust);
-    }
+    .hero h1 em { font-style: normal; color: var(--rust); }
     .hero p {
       font-size: 1.1rem;
       color: var(--smoke);
@@ -185,14 +181,14 @@
     .btn-primary {
       background: var(--rust);
       color: #fff;
-      box-shadow: 0 4px 14px rgba(184,76,26,.45);
+      box-shadow: 0 4px 14px rgba(201,162,32,.45);
     }
     .btn-primary:hover {
       background: var(--rust-dk);
       color: #fff;
       text-decoration: none;
       transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(184,76,26,.55);
+      box-shadow: 0 6px 18px rgba(201,162,32,.55);
     }
     .btn-outline {
       background: transparent;
@@ -201,7 +197,7 @@
       margin-left: 1rem;
     }
     .btn-outline:hover {
-      background: rgba(212,169,106,.15);
+      background: rgba(232,197,71,.15);
       color: var(--tan-lt);
       text-decoration: none;
     }
@@ -216,23 +212,16 @@
       text-align: center;
       color: #fff;
       font-family: var(--font-head);
-      box-shadow: 0 4px 20px var(--shadow);
+      box-shadow: 0 4px 20px rgba(10,20,50,.55);
       z-index: 1;
     }
     .hero-badge .badge-line1 { font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
-    .hero-badge .badge-main { font-size: 1.5rem; font-weight: bold; line-height: 1; }
-    .hero-badge .badge-line2 { font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
+    .hero-badge .badge-main  { font-size: 1.5rem; font-weight: bold; line-height: 1; }
+    .hero-badge .badge-line2 { font-size: .6rem;  letter-spacing: .1em;  text-transform: uppercase; opacity: .85; }
 
     /* ── services ───────────────────────────────────────────── */
-    #services {
-      background: var(--cream);
-      padding: 90px 0;
-    }
-    #services h2 {
-      font-family: var(--font-head);
-      font-size: 2.2rem;
-      color: var(--bark);
-    }
+    #services { background: var(--cream); padding: 90px 0; }
+    #services h2 { font-family: var(--font-head); font-size: 2.2rem; color: var(--bark); }
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -248,33 +237,13 @@
       box-shadow: 0 2px 8px rgba(0,0,0,.06);
       transition: box-shadow .2s, transform .2s;
     }
-    .service-card:hover {
-      box-shadow: 0 6px 22px rgba(0,0,0,.11);
-      transform: translateY(-2px);
-    }
-    .service-icon {
-      font-size: 2rem;
-      margin-bottom: .85rem;
-    }
-    .service-card h3 {
-      font-family: var(--font-head);
-      font-size: 1.15rem;
-      color: var(--bark);
-      margin-bottom: .5rem;
-    }
-    .service-card p {
-      font-size: .92rem;
-      color: var(--mid);
-      line-height: 1.6;
-    }
+    .service-card:hover { box-shadow: 0 6px 22px rgba(0,0,0,.11); transform: translateY(-2px); }
+    .service-icon { font-size: 2rem; margin-bottom: .85rem; }
+    .service-card h3 { font-family: var(--font-head); font-size: 1.15rem; color: var(--bark); margin-bottom: .5rem; }
+    .service-card p  { font-size: .92rem; color: var(--mid); line-height: 1.6; }
 
     /* ── about ──────────────────────────────────────────────── */
-    #about {
-      background: var(--bark);
-      padding: 90px 0;
-      position: relative;
-      overflow: hidden;
-    }
+    #about { background: var(--bark); padding: 90px 0; position: relative; overflow: hidden; }
     #about::before {
       content: '';
       position: absolute; inset: 0;
@@ -292,24 +261,10 @@
       position: relative; z-index: 1;
     }
     .about-text .section-label { color: var(--tan); }
-    #about h2 {
-      font-family: var(--font-head);
-      font-size: 2.2rem;
-      color: var(--cream);
-      margin-bottom: .5rem;
-    }
+    #about h2 { font-family: var(--font-head); font-size: 2.2rem; color: var(--cream); margin-bottom: .5rem; }
     #about .divider { background: var(--rust); }
-    #about p {
-      color: var(--smoke);
-      margin-bottom: 1rem;
-      font-size: .97rem;
-    }
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
+    #about p { color: var(--smoke); margin-bottom: 1rem; font-size: .97rem; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
     .stat {
       background: rgba(255,255,255,.06);
       border: 1px solid rgba(255,255,255,.1);
@@ -317,24 +272,9 @@
       padding: 1.25rem 1rem;
       text-align: center;
     }
-    .stat-num {
-      font-family: var(--font-head);
-      font-size: 2rem;
-      font-weight: bold;
-      color: var(--tan);
-      display: block;
-    }
-    .stat-label {
-      font-size: .78rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--smoke);
-      opacity: .75;
-    }
-    /* portrait placeholder */
-    .about-portrait {
-      display: flex; align-items: center; justify-content: center;
-    }
+    .stat-num   { font-family: var(--font-head); font-size: 2rem; font-weight: bold; color: var(--tan); display: block; }
+    .stat-label { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--smoke); opacity: .75; }
+    .about-portrait { display: flex; align-items: center; justify-content: center; }
     .portrait-frame {
       width: 340px; height: 380px;
       border: 5px solid var(--rust);
@@ -342,20 +282,10 @@
       background: var(--bark-lt);
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      color: var(--mid);
-      font-size: .85rem;
       text-align: center;
       padding: 2rem;
       position: relative;
       box-shadow: 8px 8px 0 var(--rust-dk);
-    }
-    .portrait-frame::before {
-      content: '&#9874;';
-      font-size: 4rem;
-      display: block;
-      margin-bottom: 1rem;
-      color: var(--tan);
-      opacity: .4;
     }
     .portrait-initials {
       width: 100px; height: 100px;
@@ -369,30 +299,12 @@
       margin-bottom: 1.5rem;
       box-shadow: 0 4px 14px var(--shadow);
     }
-    .portrait-name {
-      font-family: var(--font-head);
-      font-size: 1.1rem;
-      color: var(--cream);
-      margin-bottom: .3rem;
-    }
-    .portrait-title {
-      font-size: .8rem;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--tan);
-    }
+    .portrait-name  { font-family: var(--font-head); font-size: 1.1rem; color: var(--cream); margin-bottom: .3rem; }
+    .portrait-title { font-size: .8rem; letter-spacing: .15em; text-transform: uppercase; color: var(--tan); }
 
     /* ── testimonials ───────────────────────────────────────── */
-    #testimonials {
-      background: var(--smoke);
-      padding: 90px 0;
-    }
-    #testimonials h2 {
-      font-family: var(--font-head);
-      font-size: 2.2rem;
-      color: var(--bark);
-      text-align: center;
-    }
+    #testimonials { background: var(--smoke); padding: 90px 0; }
+    #testimonials h2 { font-family: var(--font-head); font-size: 2.2rem; color: var(--bark); text-align: center; }
     #testimonials .section-label { text-align: center; display: block; }
     #testimonials .divider { margin-left: auto; margin-right: auto; }
     .testimonials-grid {
@@ -417,16 +329,8 @@
       color: var(--tan-lt);
       line-height: 1;
     }
-    .testimonial-text {
-      font-size: .97rem;
-      color: var(--bark-lt);
-      line-height: 1.7;
-      margin-bottom: 1.25rem;
-      position: relative; z-index: 1;
-    }
-    .testimonial-author {
-      display: flex; align-items: center; gap: .75rem;
-    }
+    .testimonial-text   { font-size: .97rem; color: var(--bark-lt); line-height: 1.7; margin-bottom: 1.25rem; position: relative; z-index: 1; }
+    .testimonial-author { display: flex; align-items: center; gap: .75rem; }
     .author-avatar {
       width: 44px; height: 44px;
       border-radius: 50%;
@@ -438,45 +342,16 @@
       font-weight: bold;
       flex-shrink: 0;
     }
-    .author-name {
-      font-weight: 700;
-      font-size: .92rem;
-      color: var(--bark);
-    }
-    .author-detail {
-      font-size: .8rem;
-      color: var(--mid);
-    }
-    .stars {
-      color: var(--rust);
-      font-size: 1rem;
-      margin-bottom: .75rem;
-    }
+    .author-name   { font-weight: 700; font-size: .92rem; color: var(--bark); }
+    .author-detail { font-size: .8rem; color: var(--mid); }
+    .stars         { color: var(--rust); font-size: 1rem; margin-bottom: .75rem; }
 
     /* ── contact ────────────────────────────────────────────── */
-    #contact {
-      background: var(--cream);
-      padding: 90px 0;
-    }
-    .contact-inner {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 4rem;
-      align-items: start;
-    }
-    #contact h2 {
-      font-family: var(--font-head);
-      font-size: 2.2rem;
-      color: var(--bark);
-    }
-    #contact p {
-      color: var(--mid);
-      margin-bottom: 1.5rem;
-    }
-    .contact-detail {
-      display: flex; align-items: flex-start; gap: 1rem;
-      margin-bottom: 1.25rem;
-    }
+    #contact { background: var(--cream); padding: 90px 0; }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+    #contact h2 { font-family: var(--font-head); font-size: 2.2rem; color: var(--bark); }
+    #contact p  { color: var(--mid); margin-bottom: 1.5rem; }
+    .contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem; }
     .contact-icon {
       width: 44px; height: 44px;
       flex-shrink: 0;
@@ -486,20 +361,9 @@
       color: #fff;
       font-size: 1.2rem;
     }
-    .contact-detail-text strong {
-      display: block;
-      font-size: .78rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--mid);
-      margin-bottom: .15rem;
-    }
-    .contact-detail-text span {
-      font-size: .97rem;
-      color: var(--bark);
-    }
+    .contact-detail-text strong { display: block; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--mid); margin-bottom: .15rem; }
+    .contact-detail-text span   { font-size: .97rem; color: var(--bark); }
 
-    /* form */
     .contact-form {
       background: #fff;
       border: 1px solid var(--smoke);
@@ -507,13 +371,8 @@
       padding: 2.25rem;
       box-shadow: 0 4px 16px rgba(0,0,0,.06);
     }
-    .contact-form h3 {
-      font-family: var(--font-head);
-      font-size: 1.3rem;
-      color: var(--bark);
-      margin-bottom: 1.5rem;
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .contact-form h3 { font-family: var(--font-head); font-size: 1.3rem; color: var(--bark); margin-bottom: 1.5rem; }
+    .form-row   { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .form-group { margin-bottom: 1.1rem; }
     .form-group label {
       display: block;
@@ -542,13 +401,12 @@
     .form-group select:focus,
     .form-group textarea:focus {
       border-color: var(--rust);
-      box-shadow: 0 0 0 3px rgba(184,76,26,.12);
+      box-shadow: 0 0 0 3px rgba(201,162,32,.22);
     }
     .form-group textarea { resize: vertical; min-height: 110px; }
     .form-submit { text-align: right; margin-top: .5rem; }
     .form-submit .btn { font-family: var(--font-body); }
 
-    /* form success message */
     .form-success {
       display: none;
       background: #f0faf0;
@@ -560,46 +418,28 @@
       margin-top: 1rem;
     }
     .form-success.visible { display: block; }
+    .form-error {
+      display: none;
+      background: #fff4f0;
+      border: 1.5px solid #d9634a;
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+      color: #8c2a14;
+      font-size: .95rem;
+      margin-top: 1rem;
+    }
+    .form-error.visible { display: block; }
 
     /* ── footer ─────────────────────────────────────────────── */
-    footer {
-      background: var(--bark);
-      border-top: 3px solid var(--rust);
-      padding: 40px 0 28px;
-    }
-    .footer-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      text-align: center;
-    }
-    .footer-logo {
-      font-family: var(--font-head);
-      font-size: 1.3rem;
-      color: var(--cream);
-    }
+    footer { background: var(--bark); border-top: 3px solid var(--rust); padding: 40px 0 28px; }
+    .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center; }
+    .footer-logo { font-family: var(--font-head); font-size: 1.3rem; color: var(--cream); }
     .footer-logo span { color: var(--rust); }
-    .footer-tagline {
-      font-size: .85rem;
-      color: var(--mid);
-      letter-spacing: .06em;
-    }
+    .footer-tagline { font-size: .85rem; color: var(--mid); letter-spacing: .06em; }
     .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
-    .footer-links a {
-      color: var(--smoke);
-      font-size: .82rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      opacity: .7;
-      transition: opacity .2s;
-    }
+    .footer-links a { color: var(--smoke); font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; opacity: .7; transition: opacity .2s; }
     .footer-links a:hover { opacity: 1; text-decoration: none; }
-    .footer-copy {
-      font-size: .78rem;
-      color: var(--mid);
-      opacity: .6;
-    }
+    .footer-copy { font-size: .78rem; color: var(--mid); opacity: .6; }
 
     /* ── responsive ─────────────────────────────────────────── */
     @media (max-width: 820px) {
@@ -633,10 +473,10 @@
     </button>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#services" onclick="closeMobile()">Services</a>
-    <a href="#about"    onclick="closeMobile()">About</a>
+    <a href="#services"     onclick="closeMobile()">Services</a>
+    <a href="#about"        onclick="closeMobile()">About</a>
     <a href="#testimonials" onclick="closeMobile()">Reviews</a>
-    <a href="#contact"  onclick="closeMobile()">Contact</a>
+    <a href="#contact"      onclick="closeMobile()">Contact</a>
   </div>
 </nav>
 
@@ -667,43 +507,36 @@
     <h2>Diesel Repair Services</h2>
     <div class="divider"></div>
     <div class="services-grid">
-
       <div class="service-card">
         <div class="service-icon">&#9881;</div>
         <h3>Engine Diagnostics &amp; Repair</h3>
         <p>Full engine diagnostics using professional scan tools, plus comprehensive repair work on all diesel engine types &mdash; light, medium, and heavy duty.</p>
       </div>
-
       <div class="service-card">
         <div class="service-icon">&#128295;</div>
         <h3>Preventive Maintenance</h3>
         <p>Oil changes, filter service, fluid flushes, and scheduled tune-ups to keep your diesel running strong mile after mile.</p>
       </div>
-
       <div class="service-card">
         <div class="service-icon">&#128663;</div>
         <h3>Fuel System Service</h3>
         <p>Injector cleaning and replacement, fuel pump service, fuel filter replacement, and complete fuel system diagnostics.</p>
       </div>
-
       <div class="service-card">
         <div class="service-icon">&#128295;</div>
         <h3>Turbocharger Service</h3>
         <p>Turbo inspection, cleaning, rebuilding, and replacement. We address boost leaks and wastegate issues to restore full power.</p>
       </div>
-
       <div class="service-card">
         <div class="service-icon">&#9889;</div>
         <h3>Electrical &amp; Cooling Systems</h3>
         <p>Alternator, starter, and wiring diagnostics, plus radiator, water pump, and cooling system repairs to prevent overheating.</p>
       </div>
-
       <div class="service-card">
         <div class="service-icon">&#128664;</div>
         <h3>Trucks, Farm &amp; Heavy Equipment</h3>
         <p>Experience across pickup trucks, semi trucks, tractors, skid steers, and other diesel-powered commercial and agricultural equipment.</p>
       </div>
-
     </div>
   </div>
 </section>
@@ -716,39 +549,14 @@
         <span class="section-label">Who We Are</span>
         <h2>About Will Horne</h2>
         <div class="divider"></div>
-        <p>
-          Will Horne has spent his career working on diesel engines of every
-          make and model. Raised in the Monadnock Region, he understands the
-          demands placed on the trucks and equipment that keep local farms,
-          businesses, and families moving.
-        </p>
-        <p>
-          Whether you&rsquo;re dealing with a mysterious check-engine light, a
-          hard-starting truck on a cold morning, or need a full engine
-          overhaul, Will brings the skills, the tools, and the straight talk
-          you deserve.
-        </p>
-        <p>
-          No upsells. No runaround. Just honest diesel work from someone who
-          takes real pride in the job.
-        </p>
+        <p>Will Horne has spent his career working on diesel engines of every make and model. Raised in the Monadnock Region, he understands the demands placed on the trucks and equipment that keep local farms, businesses, and families moving.</p>
+        <p>Whether you&rsquo;re dealing with a mysterious check-engine light, a hard-starting truck on a cold morning, or need a full engine overhaul, Will brings the skills, the tools, and the straight talk you deserve.</p>
+        <p>No upsells. No runaround. Just honest diesel work from someone who takes real pride in the job.</p>
         <div class="about-stats">
-          <div class="stat">
-            <span class="stat-num">20+</span>
-            <span class="stat-label">Years Experience</span>
-          </div>
-          <div class="stat">
-            <span class="stat-num">All</span>
-            <span class="stat-label">Makes &amp; Models</span>
-          </div>
-          <div class="stat">
-            <span class="stat-num">Local</span>
-            <span class="stat-label">Monadnock Region</span>
-          </div>
-          <div class="stat">
-            <span class="stat-num">100%</span>
-            <span class="stat-label">Honest Work</span>
-          </div>
+          <div class="stat"><span class="stat-num">20+</span><span class="stat-label">Years Experience</span></div>
+          <div class="stat"><span class="stat-num">All</span><span class="stat-label">Makes &amp; Models</span></div>
+          <div class="stat"><span class="stat-num">Local</span><span class="stat-label">Monadnock Region</span></div>
+          <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Honest Work</span></div>
         </div>
       </div>
       <div class="about-portrait">
@@ -769,55 +577,30 @@
     <h2>What People Are Saying</h2>
     <div class="divider center"></div>
     <div class="testimonials-grid">
-
       <div class="testimonial-card">
         <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-text">
-          &ldquo;Will diagnosed a problem that two other shops missed entirely.
-          Fixed it the same week, no drama, fair price. My 6.7 Powerstroke
-          hasn&rsquo;t run this good in years.&rdquo;
-        </p>
+        <p class="testimonial-text">&ldquo;Will diagnosed a problem that two other shops missed entirely. Fixed it the same week, no drama, fair price. My 6.7 Powerstroke hasn&rsquo;t run this good in years.&rdquo;</p>
         <div class="testimonial-author">
           <div class="author-avatar">TM</div>
-          <div>
-            <p class="author-name">Tom M.</p>
-            <p class="author-detail">Keene, NH</p>
-          </div>
+          <div><p class="author-name">Tom M.</p><p class="author-detail">Keene, NH</p></div>
         </div>
       </div>
-
       <div class="testimonial-card">
         <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-text">
-          &ldquo;Our farm tractor went down right before hay season. Will came
-          out fast, got it running, and didn&rsquo;t charge us an arm and a
-          leg. Exactly the kind of neighbor you want in the Monadnock Region.&rdquo;
-        </p>
+        <p class="testimonial-text">&ldquo;Our farm tractor went down right before hay season. Will came out fast, got it running, and didn&rsquo;t charge us an arm and a leg. Exactly the kind of neighbor you want in the Monadnock Region.&rdquo;</p>
         <div class="testimonial-author">
           <div class="author-avatar">SR</div>
-          <div>
-            <p class="author-name">Sarah R.</p>
-            <p class="author-detail">Jaffrey, NH</p>
-          </div>
+          <div><p class="author-name">Sarah R.</p><p class="author-detail">Jaffrey, NH</p></div>
         </div>
       </div>
-
       <div class="testimonial-card">
         <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-text">
-          &ldquo;Brought my Duramax in for a turbo issue. Will explained
-          everything clearly, showed me the worn parts, and had it back to
-          me in two days. Honest guy. Highly recommend.&rdquo;
-        </p>
+        <p class="testimonial-text">&ldquo;Brought my Duramax in for a turbo issue. Will explained everything clearly, showed me the worn parts, and had it back to me in two days. Honest guy. Highly recommend.&rdquo;</p>
         <div class="testimonial-author">
           <div class="author-avatar">JB</div>
-          <div>
-            <p class="author-name">Jason B.</p>
-            <p class="author-detail">Peterborough, NH</p>
-          </div>
+          <div><p class="author-name">Jason B.</p><p class="author-detail">Peterborough, NH</p></div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -830,11 +613,7 @@
         <span class="section-label">Get In Touch</span>
         <h2>Request a Quote</h2>
         <div class="divider"></div>
-        <p>
-          Serving the Monadnock Region and surrounding areas. Reach out to
-          describe your vehicle or equipment and get an honest assessment.
-        </p>
-
+        <p>Serving the Monadnock Region and surrounding areas. Reach out to describe your vehicle or equipment and get an honest assessment.</p>
         <div class="contact-detail">
           <div class="contact-icon">&#9993;</div>
           <div class="contact-detail-text">
@@ -842,7 +621,6 @@
             <span><a href="mailto:will@whdiesel.com">will@whdiesel.com</a></span>
           </div>
         </div>
-
         <div class="contact-detail">
           <div class="contact-icon">&#128205;</div>
           <div class="contact-detail-text">
@@ -850,7 +628,6 @@
             <span>Monadnock Region, NH &amp; surrounding towns</span>
           </div>
         </div>
-
         <div class="contact-detail">
           <div class="contact-icon">&#128336;</div>
           <div class="contact-detail-text">
@@ -862,6 +639,13 @@
 
       <div class="contact-form">
         <h3>Send a Message</h3>
+        <!--
+          FORMSPREE SETUP (~2 min):
+          1. Sign up at https://formspree.io (free)
+          2. Create a new form pointed at will@whdiesel.com
+          3. Copy your endpoint (e.g. https://formspree.io/f/abcd1234)
+          4. Paste it into FORMSPREE_ENDPOINT in the <script> below
+        -->
         <form id="contactForm" novalidate>
           <div class="form-row">
             <div class="form-group">
@@ -902,13 +686,16 @@
           </div>
           <div class="form-group">
             <label for="message">Describe the Issue</label>
-            <textarea id="message" name="message" placeholder="Tell Will what&rsquo;s going on with your vehicle or equipment..."></textarea>
+            <textarea id="message" name="message" placeholder="Tell Will what's going on with your vehicle or equipment..."></textarea>
           </div>
           <div class="form-submit">
-            <button type="submit" class="btn btn-primary">Send Message</button>
+            <button type="submit" id="submitBtn" class="btn btn-primary">Send Message</button>
           </div>
           <div class="form-success" id="formSuccess">
-            &#10003; &nbsp;Thanks! Will will be in touch shortly at <strong id="confirmEmail"></strong>.
+            &#10003;&nbsp; Thanks! Will will be in touch at <strong id="confirmEmail"></strong>.
+          </div>
+          <div class="form-error" id="formError">
+            &#9888;&nbsp; Something went wrong. Please email <a href="mailto:will@whdiesel.com">will@whdiesel.com</a> directly.
           </div>
         </form>
       </div>
@@ -934,25 +721,59 @@
 </footer>
 
 <script>
-  // mobile nav toggle
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileMenu   = document.getElementById('mobileMenu');
-  hamburgerBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
+  // ── mobile nav ───────────────────────────────────────────── //
+  document.getElementById('hamburgerBtn').addEventListener('click', function() {
+    document.getElementById('mobileMenu').classList.toggle('open');
   });
-  function closeMobile() { mobileMenu.classList.remove('open'); }
+  function closeMobile() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
 
-  // contact form (demo — logs to console; wire up to a backend or Formspree as needed)
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
+  // ── contact form → Formspree ─────────────────────────────── //
+  // TODO: replace with your Formspree endpoint from https://formspree.io
+  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID';
+
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const emailVal = document.getElementById('email').value.trim();
-    if (!document.getElementById('fname').value.trim() || !emailVal) {
+
+    var fname    = document.getElementById('fname').value.trim();
+    var emailVal = document.getElementById('email').value.trim();
+
+    if (!fname || !emailVal) {
       alert('Please fill in your name and email address.');
       return;
     }
-    document.getElementById('confirmEmail').textContent = emailVal;
-    document.getElementById('formSuccess').classList.add('visible');
-    this.querySelectorAll('input, select, textarea, button').forEach(el => el.disabled = true);
+
+    var btn = document.getElementById('submitBtn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    document.getElementById('formSuccess').classList.remove('visible');
+    document.getElementById('formError').classList.remove('visible');
+
+    try {
+      var response = await fetch(FORMSPREE_ENDPOINT, {
+        method:  'POST',
+        headers: { 'Accept': 'application/json' },
+        body:    new FormData(this)
+      });
+
+      if (response.ok) {
+        document.getElementById('confirmEmail').textContent = emailVal;
+        document.getElementById('formSuccess').classList.add('visible');
+        this.querySelectorAll('input, select, textarea, button').forEach(function(el) {
+          el.disabled = true;
+        });
+      } else {
+        document.getElementById('formError').classList.add('visible');
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+      }
+    } catch (err) {
+      document.getElementById('formError').classList.add('visible');
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+    }
   });
 </script>
 </body>
